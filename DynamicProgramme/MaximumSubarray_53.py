@@ -15,13 +15,15 @@ class Solution:
         :param nums:
         :return: 最大子序列和，最大子序列
         """
+        if not nums:
+            return 0, []
         sub_arrays = list()
         for i in range(len(nums)):
             for j in range(i, len(nums)):
                 sub_arrays.append(nums[i:j + 1])
 
-        max_sum = 0
-        sub_array = []
+        max_sum = sum(sub_arrays[0])
+        sub_array = sub_arrays[0]
         for array in sub_arrays:
             if sum(array) > sum(sub_array):
                 max_sum = sum(array)
@@ -40,6 +42,8 @@ class Solution:
         :param nums:
         :return: 最大子序列和，最大子序列
         """
+        if not nums:
+            return 0, []
         sub_arrays = list()
         array = []
         for num in nums:
@@ -49,8 +53,8 @@ class Solution:
             if sum(array) < 0:
                 array = []
 
-        max_sum = 0
-        sub_array = []
+        max_sum = sum(sub_arrays[0])
+        sub_array = sub_arrays[0]
         for array in sub_arrays:
             if sum(array) > sum(sub_array):
                 max_sum = sum(array)
